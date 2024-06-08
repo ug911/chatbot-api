@@ -12,18 +12,18 @@ chatbot_assistant = ChatbotAssistant()
 def hello_world():
     return 'Hello World!'
 
-
 @app.route('/get_skills_options', methods=['POST'])
 def get_skills_options():
+    data = request.json
     # Get the value of the 'additional_words' parameter from the POST request
-    name = request.form.get('name')
-    gender = request.form.get('gender')
-    designation = request.form.get('designation')
-    team = request.form.get('team')
-    industry = request.form.get('industry')
-    work_experience = request.form.get('work_experience')
-    day_at_work = request.form.get('day_at_work')
-    debug = request.form.get('debug')
+    name = data.get('name')
+    gender = data.get('gender')
+    designation = data.get('designation')
+    team = data.get('team')
+    industry = data.get('industry')
+    work_experience = data.get('work_experience')
+    day_at_work = data.get('day_at_work')
+    debug = data.get('debug')
 
     prompt_variables = {
         'designation': designation,
@@ -44,22 +44,22 @@ def get_skills_options():
         }
     return result
 
-
 @app.route('/get_skills_map', methods=['POST'])
 def get_skills_map():
     # Get the value of the 'additional_words' parameter from the POST request
-    mongo_object_id = request.form.get('id')
-    name = request.form.get('name')
-    gender = request.form.get('gender')
-    designation = request.form.get('designation')
-    team = request.form.get('team')
-    industry = request.form.get('industry')
-    work_experience = request.form.get('work_experience')
-    day_at_work = request.form.get('day_at_work')
-    selected_skills = request.form.get('selected_skills')
-    additional_work = request.form.get('additional_work')
-    handover = request.form.get('handover')
-    debug = request.form.get('debug')
+    data = request.json
+    mongo_object_id = data.get('id')
+    name = data.get('name')
+    gender = data.get('gender')
+    designation = data.get('designation')
+    team = data.get('team')
+    industry = data.get('industry')
+    work_experience = data.get('work_experience')
+    day_at_work = data.get('day_at_work')
+    selected_skills = data.get('selected_skills')
+    additional_work = data.get('additional_work')
+    handover = data.get('handover')
+    debug = data.get('debug')
 
     prompt_variables = {
         'designation': designation,
