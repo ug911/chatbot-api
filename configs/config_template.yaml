@@ -1,0 +1,9 @@
+mongo:
+  username: utkgupta
+  password: XXXXXXXXXXXXX
+  host: cluster1.XXXXXX.mongodb.net
+  database: openai-projects
+  collection: interview-bot-chats
+openai:
+  api_key: sk-proj-XXXXXX
+  model: gpt-4o
