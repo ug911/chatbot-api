@@ -62,13 +62,20 @@ class ChatbotAssistant:
             str: Generate Skills Options
         """
         self.object_id = self.mongo_client.create_new()
-        prompt = '''What should be skills for this person: 
-        Designation: {designation}
-        Team: {team}
-        Industry: {industry},
-        Work Experience: {work_experience},
-        Day at Work: {day_at_work}
-        Provide the categories and skills inside those categories
+        prompt = '''I need a list of 30 skills for an employee based on their professional profile. Provide the skills for the following role:
+        1. Title: {designation}
+        2. Work Experience total: {work_experience} years
+        3. Industry: {industry}
+        4. Team: {team}
+        5. How does their work day look like: {day_at_work}
+        
+        Output format:
+        {
+        "designation" : <>, "work_experience" : <>, "industry" : <>, "team": <>, "selected_skills" : []
+        
+        
+        Give only json as output. 
+        Do not put \'''json \''' in your output.
         '''.format(
             designation=prompt_variables['designation'],
             team=prompt_variables['team'],
