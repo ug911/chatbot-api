@@ -108,16 +108,23 @@ class ChatbotAssistant:
             str: Generate Skills Options
         """
         self.object_id = object_id
-        prompt = '''What should be skills for this person: 
-        Designation: {designation}
-        Team: {team}
-        Industry: {industry},
-        Work Experience: {work_experience},
-        Day at Work: {day_at_work}
-        Selected Skills: {selected_skills}
-        Additional Tasks the person want to do for personal growth: {additional_work}
-        Tasks the person wants to handover: {handover}
-        Provide the categories and skills inside those categories
+        prompt = '''Based on the information provided below, provide 6 statements about the skills and tasks that they person is doing. 
+        
+        ## Information about the user:
+        - Designation: {designation}
+        - Team: {team}
+        - Industry: {industry},
+        - Work Experience: {work_experience},
+        - Typical day at Work: {day_at_work}
+        - Selected Skills: {selected_skills}
+        - Additional tasks they want to do for personal growth: {additional_work}
+        - Tasks they wants to handover: {handover}
+        
+        Output: 
+        - Provide 6 statements about the skills and tasks the person in their current role is doing. 
+        - Of these 6, 3 statements should be encouraging mentioning the skills they have selected
+        - Of these 6, 3 should be about what they should focus more on and improve
+        - Do not provide any additional statements
         '''.format(
             designation=prompt_variables['designation'],
             team=prompt_variables['team'],
