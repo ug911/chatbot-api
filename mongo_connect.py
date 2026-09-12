@@ -21,6 +21,7 @@ class MongoConnect:
         self.db = self.client[cx['mongo']['database']]
         self.collection = self.db[cx['mongo']['collection']]
         self.object_id = None
+        self.object = None
 
     def create_new(self):
         new_data = {
@@ -34,3 +35,7 @@ class MongoConnect:
     def update(self, update_dict):
         filter_query = {"_id": ObjectId(self.object_id)}
         self.collection.update_one(filter_query, update_dict)
+
+    def find_object_or_create(self, token):
+        self.object = self.collection.findOne(token)
+        return self.object
